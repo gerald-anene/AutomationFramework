@@ -10,6 +10,7 @@ using CoveaAutoFramework.JIRA;
 using CoveaFramework.Config;
 using CoveaAutoFramework.FeatureAttributes;
 using CoveaAutoFramework.Logging;
+using ProvidentDirect.Steps;
 //using CoveaFramework.generalSteps;
 //using ProvidentProjects.generalSteps;
 
@@ -53,7 +54,7 @@ namespace CoveaAutoFramework.StoryRunners
             featureBuilder.ToString().ExecuteText(typeof(GeneralSteps).Assembly, eventListeners.ToArray());
         }
 
-        [TestFixtureTearDown]
+        [TearDown]
         public void FixtureTearDown()
         {
             Factory.Instance.Kernel.Dispose();

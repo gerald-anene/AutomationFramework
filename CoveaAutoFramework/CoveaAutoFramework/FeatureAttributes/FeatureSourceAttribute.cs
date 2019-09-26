@@ -4,9 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Ninject;
-using CoveaAutoFramework.ApiClients;
+//using CoveaAutoFramework.ApiClients;
 using CoveaAutoFramework.JIRA;
-using CoveaAutoFramework.Config;
+//using CoveaAutoFramework.Config;
+using CoveaFramework.ApiClients;
+using CoveaFramework.Config;
 
 namespace CoveaAutoFramework.FeatureAttributes
 {

@@ -11,7 +11,8 @@ using Newtonsoft.Json.Linq;
 using Newtonsoft.Json;
 using System.Net.Http.Formatting;
 using Newtonsoft.Json.Serialization;
-using CoveaFramework.JIRA;
+//using CoveaFramework.JIRA;
+using CoveaAutoFramework.JIRA;
 
 namespace CoveaFramework.ApiClients
 {
@@ -52,6 +53,8 @@ namespace CoveaFramework.ApiClients
                 Convert.ToBase64String(Encoding.ASCII.GetBytes(
                         string.Format("{0}:{1}", username, password))));
 
+
+
             var settings = new JsonSerializerSettings();
             // make sure properties keys are camel cased
             settings.ContractResolver = new CamelCasePropertyNamesContractResolver();
@@ -76,8 +79,9 @@ namespace CoveaFramework.ApiClients
             };
 
             var response = await this.PutAsync(string.Format(EXECUTION_RESOURCE_FORMAT, executionId), statusUpdate, defaultJsonFormatter).ConfigureAwait(false);
-
+            var test = response.Content.ReadAsStringAsync().Result;
             response.EnsureSuccessStatusCode();
+            
         }
 
         private async Task<Project> GetProject(string name)
@@ -99,7 +103,7 @@ namespace CoveaFramework.ApiClients
             return project;
         }
 
-        private async Task<JIRA.Version> GetVersion(long projectId, string name)
+        private async Task<CoveaAutoFramework.JIRA.Version> GetVersion(long projectId, string name)
         {
             if (name == null)
             {
